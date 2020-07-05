@@ -32,26 +32,6 @@ best <- function(name_of_state, condition) {
           
           # Indices of the total data that match the lowest value obtained
           a <- which(as.numeric(data[, 11]) == lowest)
-          
-          # Indices where the given state matches
-          b <- which(data[a, 7] == name_of_state)
-          
-          results <- data[a[b], 2]
-          
-          # If there is no tie between the lowest scores we select the name
-          # of the winner (2nd column)
-          if(length(results) == 1) {
-               winner <- results
-          }
-          
-          # If there is a tie we select all winners and sort them by
-          # alphabetical order
-          
-          else {
-          
-               # We sort them
-               winner <- sort(results)[1]
-          }
      }
      
      else if(condition == 'heart failure') {
@@ -67,26 +47,6 @@ best <- function(name_of_state, condition) {
           
           # Indices of the total data that match the lowest value obtained
           a <- which(as.numeric(data[, 17]) == lowest)
-          
-          # Indices where the given state matches
-          b <- which(data[a, 7] == name_of_state)
-          
-          results <- data[a[b], 2]
-          
-          # If there is no tie between the lowest scores we select the name
-          # of the winner (2nd column)
-          if(length(results) == 1) {
-               winner <- results
-          }
-          
-          # If there is a tie we select all winners and sort them by
-          # alphabetical order
-          
-          else {
-               
-               # We sort them
-               winner <- sort(results)[1]
-          }
      }
      
      else if(condition == 'pneumonia') {
@@ -102,31 +62,31 @@ best <- function(name_of_state, condition) {
           
           # Indices of the total data that match the lowest value obtained
           a <- which(as.numeric(data[, 23]) == lowest)
-          
-          # Indices where the given state matches
-          b <- which(data[a, 7] == name_of_state)
-          
-          results <- data[a[b], 2]
-          
-          # If there is no tie between the lowest scores we select the name
-          # of the winner (2nd column)
-          if(length(results) == 1) {
-               winner <- results
-          }
-          
-          # If there is a tie we select all winners and sort them by
-          # alphabetical order
-          
-          else {
-               
-               # We sort them
-               winner <- sort(results)[1]
-          }
      }
      
      # If the outcome is invalid
      else {
           stop('invalid outcome')
+     }
+     
+     # Indices where the given state matches
+     b <- which(data[a, 7] == name_of_state)
+     
+     results <- data[a[b], 2]
+     
+     # If there is no tie between the lowest scores we select the name
+     # of the winner (2nd column)
+     if(length(results) == 1) {
+          winner <- results
+     }
+     
+     # If there is a tie we select all winners and sort them by
+     # alphabetical order
+     
+     else {
+          
+          # We sort them
+          winner <- sort(results)[1]
      }
      
      return(winner)
